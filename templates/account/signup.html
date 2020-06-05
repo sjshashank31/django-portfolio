@@ -1,6 +1,6 @@
 {% extends "account/base.html" %}
 
-
+{% load crispy_forms_tags %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
@@ -22,22 +22,11 @@
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-    <label for="id_login">username:</label>
-    <div class="form-group">
-    <input type="text" name="username" placeholder="Username" autofocus="autofocus" maxlength="150" required id="id_login"  class="form-control" />
-    </div>
-    <label for="id_email">Email:</label>
-    <div class="form-group">
-    <input type="text" name="email" placeholder="Email address" required id="id_email"  class="form-control" />
-    </div>
-    <label for="id_password1">Password:</label>
-    <div class="form-group">
-    <input type="password" name="password1" placeholder="Password" required id="id_password1"  class="form-control" />
-    </div>
-    <label for="id_password2">Confirm Password:</label>
-    <div class="form-group">
-    <input type="password" name="password2" placeholder="Password(again)" required id="id_password2"  class="form-control" />
-    </div>
+   {{ form | crispy }}
+
+    {% for i in forms.error %}
+    <h1>{{ i.error }}</h1>
+{% endfor %}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}

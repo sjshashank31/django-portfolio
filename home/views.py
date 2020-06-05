@@ -111,10 +111,10 @@ def skill_info(request, slug):
             if form.is_valid():
                 skill = form.cleaned_data.get('skill')
                 percent = form.cleaned_data.get('percent')
-                if not Skill.objects.filter(user=request.user, slug=slug, skill=skill):
+                if not Skill.objects.filter(user=request.user, slug__slug=slug, skill=skill):
                     skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
                     skills.save()
-                    return redirect('home:skill-details', slug__slug=slug)
+                    return redirect('home:skill-details', slug=slug)
                 else:
                     return HttpResponse("<h3>You already have registered this skill"
                                         " go and edit if you want......go back</h3>")
@@ -221,17 +221,11 @@ def experience_info(request, slug):
 
 @login_required
 def get_user(request):
-    if request.method == 'POST':
-        try:
-            form = GetUserForm(request.POST)
-            slug = request.POST.get('slug')
-            return redirect("home:detail", slug=slug)
-        except Exception as e:
-            print(e)
-            return HttpResponse('User is Not Registered')
 
-    form = GetUserForm()
-    return render(request, 'already_user.html', {'form': form})
+    context = {}
+    context['details'] = UserInfo.objects.filter(user=request.user).all()
+    return render(request, 'already_user.html', context)
+
 
 
 @login_required
