@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-5">
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Write things carefully</strong></p></li>
+                 <li><p><strong>Write here about your education schooling 10th-12th , graduation , post-graduation and other diploma courses </strong></p></li>
+                 <li><p><strong>You can add more after submitting one</strong></p></li>
+
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card-header"><strong>Tell us about your education</strong></div>
+
+           <form  method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <label for="id_board_or_univ">Board or univ:</label>
+               <div class="form-group">
+                   <input type="text" name="board_or_univ" class="form-control" placeholder="Board Name or University Name" maxlength="200" required id="id_board_or_univ">
+               </div>
+               <label for="id_course">Course:</label>
+               <div class="form-group">
+               <input type="text" name="course" class="form-control" maxlength="200" placeholder="Course" required id="id_course">
+               </div>
+               <label for="id_school_or_college">School or college:</label>
+               <div class="form-group">
+                   <input type="text" name="school_or_college" class="form-control" placeholder="School Name / College Name" maxlength="300" required id="id_school_or_college">
+               </div>
+               <label for="id_cgpa_or_percent">Cgpa or percent:</label>
+               <div class="form-group">
+                   <input type="number" name="cgpa_or_percent" class="form-control" placeholder="CGPA / percentage" step="0.01" required id="id_cgpa_or_percent">
+               </div>
+               <label for="id_cgpa">Cgpa:</label>
+               <div class="form-group">
+                   <input type="checkbox" name="cgpa" id="id_cgpa">
+               </div>
+
+                <input class="button btn-info" type="submit" value="Save">
+               </form>
+            <a href="{% url 'home:education-details' slug %}" class="button btn-warning">Skip</a>
+        </div>
+
+    </div>
+
+
+</div>
+{%endblock%}

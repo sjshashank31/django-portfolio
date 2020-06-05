@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="margin-top:100px;">
+    <div class="row">
+        <div class="col-sm-4"><a class="block button btn-warning " href="#">See Demo  <i class="fab fa-youtube"></i></a></div>
+
+        <div class="col-sm-4"> <a class="block button btn-info" href="{% url 'account_signup' %}">Start</a></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Write things carefully</strong></p></li>
+                 <li><p><strong>You must have your cv</strong></p></li>
+             </ul>
+         </div>
+    </div>
+        </div></div>
+
+</div>
+
+{% endblock %}

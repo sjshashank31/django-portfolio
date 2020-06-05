@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+work info form
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-5">
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Tell us about your projects here</strong></p></li>
+                 <li><p><strong>in the project name write the title of your projects</strong></p></li>
+                 <li><p><strong>in the project type field write the type like website, application, software etc.</strong></p></li>
+                 <li><p><strong>in the image field upload your projects home page screen-shot </strong></p></li>
+                 <li><p><strong>in the project link upload link of your projects</strong></p></li>
+
+
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+
+           <form  method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <label for="id_project_name">Project name:</label>
+               <div class="form-group">
+                   <input type="text" name="project_name" class="form-control" value="{{form.project_name.value}}" maxlength="50" id="id_project_name">
+               </div>
+               <label for="id_project_type">Project type:</label>
+               <div class="form-group">
+                   <input class="form-control" type="text" name="project_type" value="{{form.project_type.value}}" maxlength="50" id="id_project_type">
+               </div>
+                <label for="id_project_link">Project link:</label>
+                   <div class="form-group">
+                       <input type="text" name="project_link" maxlength="2084" id="id_project_link" class="form-control" value="{{form.project_link.value}}">
+                   </div>
+               <label for="id_project_image">Project image:</label>
+               Currently: <a href="{{form.project_image.value }}">{{form.project_image.value}}</a><br>
+               Change:
+               <div class="form-group">
+                    <input type="file" name="project_image" accept="image/*" id="id_project_image">
+               </div>
+                <input class="button btn-info" type="submit" value="Save">
+               </form>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}

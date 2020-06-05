@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+<div class="container" style="margin-top:50px; margin-bottom:50px;">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Write all things carefully</strong></p></li>
+                 <li><p><strong>You don't need a cv to proceed . system will generate a cv for you . you just need to give information carefully and a portfolio site and cv will be generated for you</strong></p></li>
+                 <li><p><strong>In about tell us something about you it will help to generate a good cv and portfolio for you</strong></p></li>
+                 <li><p><strong>In place tell us about your current city </strong></p></li>
+                 <li><p><strong>In profession field tell us your profession specifically for example : full stack developer , back end developer, engineering student, comuter science student </strong></p></li>
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+               <label for="id_name">Name:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" maxlength="50" required id="id_name" value="{{form.name.value}}" placeholder="Name">
+                </div>
+                <label for="id_mobile_no">Mobile no:</label>
+                <div class="form-group">
+                    <input type="number" name="mobile_no" step="1" required id="id_mobile_no" value="{{form.mobile_no.value}}" class="form-control" placeholder="Mobile No">
+                </div>
+                <label for="id_email">Email:</label>
+                <div class="form-group">
+                    <input type="email" name="email" maxlength="254" class="form-control" value="{{form.email.value}}" required id="id_email" placeholder="Email">
+                </div>
+                <label for="id_about">About:</label>
+                <div class="form-group">
+                    <textarea name="about" cols="40" rows="10" id="id_about"  class="form-control" placeholder="About You">{{ form.about.value}}</textarea>
+                </div>
+                <label for="id_profession">Profession:</label>
+                <div class="form-group">
+                    <input type="text" name="profession" maxlength="50" value="{{form.profession.value}}" required id="id_profession" class="form-control" placeholder="Email">
+                </div>
+                <label for="id_place">Place:</label>
+                <div class="form-group">
+                    <input type="text" name="place" class="form-control" value="{{form.place.value}}" placeholder="Your current City" maxlength="50" required id="id_place">
+                </div>
+                <label for="id_profile_picture">Profile picture:</label>
+                Currently: <p style="color:dodgerblue;">{{ form.profile_picture.value }}</p>
+                Change:
+                <input type="file" name="profile_picture" accept="image/*" id="id_profile_picture">
+
+                <div class="form-group">
+                    <input class="button btn-info" type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+{% endblock %}

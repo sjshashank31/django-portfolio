@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Experience info form
+{% endblock %}
+{% block content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-5">
+
+           <form  method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+                <label for="id_orgainsation">Company Name:</label>
+               <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Company name" value="{{form.organisation_name.value}}" name="organisation_name" maxlength="50" required id="id_orgainsation">
+               </div>
+               <label for="id_post">Post:</label>
+               <div class="form-group">
+                   <input type="text" class="form-control" value="{{form.post.value}}" name="post" maxlength="50" required id="id_post">
+               </div>
+               <label for="id_joining_date">Joining date:</label>
+               <div class="form-group">
+                   <input type="date" name="joining_date" required id="id_joining_date" class="form-control" value="{{form.joining_date.value}}" placeholder="date format yyyy-mm-dd">
+               </div>
+               <label for="id_ending_date">Ending date:</label>
+               <div class="form-group">
+                   <input type="date" name="ending_date" class="form-control" placeholder="date format yyyy-mm-dd"  id="id_ending_date" value="{{form.ending_date.value.date}}">
+               </div>
+               <label for="id_work_experience">Work experience:</label>
+               <div class="form-group">
+                   <textarea name="work_experience" class="form-control" placeholder="Work experience" cols="40" rows="10" required id="id_work_experience">{{form.work_experience.value}}
+                   </textarea>
+               </div>
+
+                <input class="button btn-info" type="submit" value="Update">
+               </form>
+        </div>
+        <div class="col-md-5">
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Write things carefully</strong></p></li>
+                 <li><p><strong>You must have your cv</strong></p></li>
+             </ul>
+         </div>
+    </div>
+        </div>
+    </div>
+
+
+</div>
+{%endblock%}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Educaion Details
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="card-header mt-5"><strong>About Education</strong></div>
+    <div class="row">
+        <div class="col-sm-4">
+
+            <table class="table table-hover">
+                <tr>
+                    <th>Board Or University</th>
+                    <th>Course</th>
+                    <th>College Or School </th>
+                    <th>CGPA or Percentage</th>
+
+                </tr>
+                {% for details in details %}
+                <tr>
+                    <td>{{details.board_or_univ}}</td>
+                    <td>{{details.course}}</td>
+
+                    <td>{{details.school_or_college}}</td>
+                    {% if details.cgpa%}
+                        <td>{{details.cgpa_or_percent}}</td>
+                    {% else %}
+                        <td>{{details.cgpa_or_percent}}%</td>
+                    {% endif %}
+                    <td><a class="btn-link" href="{% url 'home:update-education' slug details.course %}">edit</a> </td>
+                    <td><a class="btn-link" href="{% url 'home:delete-education' slug details.course %}">delete</a> </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+    <a href="{% url 'home:service' slug %}" class="button btn-primary">Next</a>
+    <a href="{% url 'home:education' slug %}" class="button btn-danger">Add more</a>
+
+</div>
+{% endblock %}

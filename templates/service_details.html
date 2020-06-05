@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Service Details
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card-header"><strong>Your Expertise</strong></div>
+    <div class="row">
+        <div class="col-sm-7">
+
+            <table class="table table-hover">
+                <tr>
+                    <th>Service Name</th>
+                    <th>Description</th>
+
+                </tr>
+                {% for details in details %}
+                <tr>
+                    <td>{{details.service_name}}</td>
+                    <td>{{details.description}}</td>
+                    <td><a class="btn-link" href="{% url 'home:update-service' slug details.service_name %}">Edit</a></td>
+                    <td><a class="btn-link" href="{% url 'home:delete-service' slug details.service_name %}">delete</a></td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+    <a href="{% url 'home:work' slug %}" class="button btn-info">Next</a>
+    <a href="{% url 'home:service' slug %}" class="button btn-danger">Add More</a>
+
+</div>
+{% endblock %}

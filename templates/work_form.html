@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+work info form
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-5">
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Tell us about your projects here</strong></p></li>
+                 <li><p><strong>in the project name write the title of your projects</strong></p></li>
+                 <li><p><strong>in the project type field write the type like website, application, software etc.</strong></p></li>
+                 <li><p><strong>in the image field upload your projects home page screen-shot </strong></p></li>
+                 <li><p><strong>in the project link upload link of your projects</strong></p></li>
+
+
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card-header"><strong>Register Your projects</strong></div>
+
+           <form  method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <label for="id_project_name">Project name:</label>
+               <div class="form-group">
+                   <input type="text" name="project_name" class="form-control" placeholder="Project Name" maxlength="50" id="id_project_name">
+               </div>
+               <label for="id_project_type">Project type:</label>
+               <div class="form-group">
+                   <input class="form-control" type="text" name="project_type" placeholder="Project type" maxlength="50" id="id_project_type">
+               </div>
+                <label for="id_project_link">Project link:</label>
+                   <div class="form-group">
+                       <input type="text" name="project_link" maxlength="2084" id="id_project_link" class="form-control" placeholder="Project Link">
+                   </div>
+                <label for="id_project_image">Project image:</label>
+               <div class="form-group">
+                   <input type="file" class="form-control" name="project_image" accept="image/*" required id="id_project_image">
+               </div>
+                <input class="button btn-info" type="submit" value="Save">
+               </form>
+                    <a href="{% url 'home:work-details' slug %}" class="button btn-warning">Skip</a>
+
+
+        </div>
+    </div>
+
+</div>
+{%endblock%}

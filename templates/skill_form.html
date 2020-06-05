@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-5">
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>Write things carefully</strong></p></li>
+                 <li><p><strong>In percentage field tell us about your level in that skill if you are beginner write between 0-40 if intermediate write between 41-80 and if you are pro write between 80-100 </strong></p></li>
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card-header"><strong>Register your skills</strong></div>
+
+           <form  method="POST" class="form" enctype="multipart/form-data">
+               {% csrf_token %}
+               <label for="id_skill">Skill:</label>
+               <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Skill Name" required name="skill" maxlength="50" id="id_skill">
+               </div>
+               <label for="id_percent">Percentage:</label>
+               <div class="form-group">
+                   <input type="number" class="form-control" placeholder="80" step="0.01" name="percent" required id="id_percent">
+               </div>
+               <input class="button btn-info" type="submit" value="Save">
+           </form>
+            <a href="{% url 'home:skill-details' slug %}" class="button btn-warning">Skip</a>
+        </div>
+
+    </div>
+
+
+</div>
+{%endblock%}
