@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}
-Experience info form
+update experience
 {% endblock %}
 {% block content %}
-<div class="container" style="margin-top:50px;">
+<div class="container mb-3" style="margin-top:50px;">
     <div class="row">
         <div class="col-md-5">
-
+              <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title text-white">
+                <strong>Instructions</strong>
+            </h4>
+        </div>
+        <div class="panel-body">
+             <ul>
+                 <li><p><strong>In this form tell us about your pas jobs</strong></p></li>
+                 <li><p><strong>in the post field tell us about your post in that company</strong></p></li>
+                 <li><p><strong>in the work experience field tell us about your work and achievements</strong></p></li>
+                 <li><p><strong>for present company leave ending date field blank but joining date is required </strong></p></li>
+             </ul>
+         </div>
+    </div>
+        </div>
+        <div class="col-md-5">
+           <div class="card-header bg-info mt-2 mb-2"><strong>Update Experience Details</strong></div>
            <form  method="POST" enctype="multipart/form-data">
                {% csrf_token %}
                 <label for="id_orgainsation">Company Name:</label>
@@ -33,21 +50,6 @@ Experience info form
 
                 <input class="button btn-info" type="submit" value="Update">
                </form>
-        </div>
-        <div class="col-md-5">
-              <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-                <strong>Instructions</strong>
-            </h4>
-        </div>
-        <div class="panel-body">
-             <ul>
-                 <li><p><strong>Write things carefully</strong></p></li>
-                 <li><p><strong>You must have your cv</strong></p></li>
-             </ul>
-         </div>
-    </div>
         </div>
     </div>
 

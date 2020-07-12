@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+{% block title %}
 
+ Profile info form
+{% endblock %}
 {% block content %}
 <div class="container" style="margin-top:50px; margin-bottom:50px;">
 
@@ -7,7 +10,7 @@
         <div class="col-md-5">
             <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
+            <h4 class="panel-title text-white">
                 <strong>Instructions</strong>
             </h4>
         </div>
@@ -20,10 +23,12 @@
                  <li><p><strong>In profession field tell us your profession specifically for example : full stack developer , back end developer, engineering student, comuter science student </strong></p></li>
              </ul>
          </div>
+                <a href="{% url 'home:already-user' %}" class="mt-3 button btn-warning">Already a User</a>
     </div>
         </div>
+
         <div class="col-md-5">
-            <div class="card-header mt-2"><strong> Register Yourself with us </strong></div>
+            <div class="card-header bg-info mt-2"><strong> Personal Information </strong></div>
             <form class="form mt-2" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="id_name">Name:</label>
@@ -56,10 +61,10 @@
                 </div>
 
                 <div class="form-group">
-                    <input class="button btn-info" type="submit" value="Save">
+                    <input class="button btn-primary" type="submit" value="Save">
                 </div>
             </form>
-            <a href="{% url 'home:already-user' %}" class="button btn-danger">Already a User</a>
+
         </div>
 
     </div>

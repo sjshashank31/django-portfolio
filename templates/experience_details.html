@@ -7,29 +7,29 @@ Experience Details
 
 {% block content %}
 
-<div class="container" style="margin-top:20px;">
-    <div class="card-header"><strong>Your Past Experiences</strong></div>
+<div class="container mb-3" style="margin-top:20px;">
+    <div class="card-header bg-info mt-2"><strong>Your Past Experiences</strong></div>
     <div class="row">
         {% for details in details %}
-        <div class="col-sm-4 m-3">
+        <div class="col-sm-4 mt-3 mb-2">
 
-                <div class="card bg-dark text-white ">
-                    <div class="card-header  ">{{details.organisation_name}}</div>
-                    <div class="card-body text-center">
+                <div class="card p-2 bg-white  font-weight-bolder">
+                    <div class="card-header bg-dark  ">{{details.organisation_name}}</div>
+                    <div class="card-body text-center text-dark">
                         <p class="card-text">{{details.post}}</p>
                       <p class="card-text">{{details.joining_date}}-{% if details.ending_date == None %} present {% else %} {{ details.ending_date}} {% endif %} </p>
                         <p class="card-text">{{details.work_experience}}</p>
                     </div>
-                    <a class="btn btn-link" href="{% url 'home:update-experience' slug details.organisation_name %}" >edit</a>
-                    <a class="btn btn-link" href="{% url 'home:delete-experience' slug details.organisation_name %}" >delete</a>
+                    <a class="btn mx-auto btn-outline-dark" href="{% url 'home:update-experience' slug details.organisation_name %}" >edit</a>
+                    <a class="btn mx-auto  btn-outline-dark" href="{% url 'home:delete-experience' slug details.organisation_name %}" >delete</a>
                 </div>
 
         </div>
         {% endfor %}
 
     </div>
-    <a href="{% url 'home:experience' slug %}" class="button btn-danger">Add more</a>
-    <a href="{% url 'home:create' slug %}" class="button btn-success">Create Portfolio</a>
+    <a href="{% url 'home:experience' slug %}" class="button btn-outline-primary">Add more</a>
+    <a href="{% url 'home:create' slug %}" class="button btn-warning">Create Portfolio</a>
 
 </div>
 {% endblock %}

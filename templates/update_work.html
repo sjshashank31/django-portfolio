@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
-work info form
+update work
 {% endblock %}
 
 {% block content %}
@@ -9,7 +10,7 @@ work info form
         <div class="col-md-5">
               <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
+            <h4 class="panel-title text-white">
                 <strong>Instructions</strong>
             </h4>
         </div>
@@ -27,7 +28,7 @@ work info form
     </div>
         </div>
         <div class="col-md-5">
-
+           <div class="card-header bg-info mt-2 mb-2"><strong>Update Your project</strong></div>
            <form  method="POST" enctype="multipart/form-data">
                {% csrf_token %}
                <label for="id_project_name">Project name:</label>
@@ -43,12 +44,12 @@ work info form
                        <input type="text" name="project_link" maxlength="2084" id="id_project_link" class="form-control" value="{{form.project_link.value}}">
                    </div>
                <label for="id_project_image">Project image:</label>
-               Currently: <a href="{{form.project_image.value }}">{{form.project_image.value}}</a><br>
+               Currently: <a href="{% get_media_prefix %}{{form.project_image.value}}">{{form.project_image.value}}</a><br>
                Change:
                <div class="form-group">
                     <input type="file" name="project_image" accept="image/*" id="id_project_image">
                </div>
-                <input class="button btn-info" type="submit" value="Save">
+                <input class="button btn-info" type="submit" value="Update">
                </form>
         </div>
 

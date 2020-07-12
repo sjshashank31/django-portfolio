@@ -7,12 +7,11 @@ Educaion Details
 
 {% block content %}
 
-<div class="container">
-    <div class="card-header mt-5"><strong>About Education</strong></div>
-    <div class="row">
-        <div class="col-sm-4">
+<div class="container mb-3">
+    <div class="card-header bg-info mt-2"><strong>About Education</strong></div>
 
-            <table class="table table-hover">
+
+            <table class="table table-dark table-hover">
                 <tr>
                     <th>Board Or University</th>
                     <th>Course</th>
@@ -22,23 +21,21 @@ Educaion Details
                 </tr>
                 {% for details in details %}
                 <tr>
-                    <td>{{details.board_or_univ}}</td>
-                    <td>{{details.course}}</td>
+                    <td scope="col">{{details.board_or_univ}}</td>
+                    <td scope="col">{{details.course}}</td>
 
-                    <td>{{details.school_or_college}}</td>
+                    <td scope="col">{{details.school_or_college}}</td>
                     {% if details.cgpa%}
-                        <td>{{details.cgpa_or_percent}}</td>
+                        <td scope="col">{{details.cgpa_or_percent}}</td>
                     {% else %}
-                        <td>{{details.cgpa_or_percent}}%</td>
+                        <td scope="col">{{details.cgpa_or_percent}}%</td>
                     {% endif %}
-                    <td><a class="btn-link" href="{% url 'home:update-education' slug details.course %}">edit</a> </td>
-                    <td><a class="btn-link" href="{% url 'home:delete-education' slug details.course %}">delete</a> </td>
+                    <td scope="col"><a class="btn-link" href="{% url 'home:update-education' slug details.course %}">edit</a> </td>
+                    <td scope="col"><a class="btn-link" href="{% url 'home:delete-education' slug details.course %}">delete</a> </td>
                 </tr>
                 {% endfor %}
             </table>
-        </div>
 
-    </div>
     <a href="{% url 'home:service' slug %}" class="button btn-primary">Next</a>
     <a href="{% url 'home:education' slug %}" class="button btn-danger">Add more</a>
 

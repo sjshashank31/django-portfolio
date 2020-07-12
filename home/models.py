@@ -1,9 +1,11 @@
+from django.shortcuts import reverse
 from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 import itertools
 import random
 import string
+from sorl.thumbnail import ImageField, get_thumbnail
 
 
 class UserInfo(models.Model):
@@ -38,6 +40,9 @@ class UserInfo(models.Model):
         self._generate_slug()
 
         super().save(*args, **kwargs)
+
+    def get_img_url(self, slug):
+        return reverse('home:media', kwargs={'slug':slug})
 
 
 class Study(models.Model):

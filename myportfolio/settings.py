@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 AUTHENTICATION_BACKENDS = [
 
@@ -142,3 +143,5 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home:info'
+
+ACCOUNT_EMAIL_VERIFICATION = "none"

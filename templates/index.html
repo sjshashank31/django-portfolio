@@ -84,9 +84,6 @@
 			</nav>
 
 			<div class="colorlib-footer">
-				<p><small>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></span></small></p>
 				<ul>
 					<li><a href="#"><i class="icon-facebook2"></i></a></li>
 					<li><a href="#"><i class="icon-twitter2"></i></a></li>
@@ -110,7 +107,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					   					<div class="desc">
 						   					<h1>Hi! <br>I'm {{info.name}}</h1>
 						   					<h2>{{ info.profession }} at <a href="https://colorlib.com/" target="_blank">{{ info.place }}</a></h2>
-												<p><a href ="{% url 'home:create-cv' info.slug %}" class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>
+												<p><a target="_blank" href ="{% url 'home:create-cv' info.slug %}" class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>
 											</div>
 					   				</div>
 					   			</div>
@@ -125,7 +122,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					   				<div class="slider-text-inner">
 					   					<div class="desc">
 						   					<h1 style="color:#efc050">I am <br>a {{info.profession}}</h1>
-
+											<p><a target="_blank" href ="{% url 'home:create-cv' info.slug %}" class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>
 											</div>
 					   				</div>
 					   			</div>
@@ -376,14 +373,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<section class="colorlib-contact" data-section="contact">
 				<div class="colorlib-narrow-content">
 					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" >
 							<span class="heading-meta">Get in Touch</span>
 							<h2 class="colorlib-heading">Contact</h2>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-5">
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+							<div class="colorlib-feature colorlib-feature-sm animate-box" >
 								<div class="colorlib-icon">
 									<i class="icon-globe-outline"></i>
 								</div>
@@ -392,7 +389,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 							</div>
 
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+							<div class="colorlib-feature colorlib-feature-sm animate-box">
 								<div class="colorlib-icon">
 									<i class="icon-map"></i>
 								</div>
@@ -401,7 +398,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 							</div>
 
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+							<div class="colorlib-feature colorlib-feature-sm animate-box">
 								<div class="colorlib-icon">
 									<i class="icon-phone"></i>
 								</div>

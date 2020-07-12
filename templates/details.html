@@ -1,27 +1,42 @@
 {% extends 'base.html' %}
-
+{% load thumbnail %}
 {% block content %}
 
-<div class="container" style="margin-top:50px;">
-    <div class="card-header"><strong>{{ details.name }}'s Details </strong></div>
-    <div class="row m-3">
-        <div class="col-sm-3" style="margin:10px;">
-            <img src="{{details.profile_picture.url}}" class="img-thumbnail" style="height:250px;width:300px;">
-        </div>
-        <div class="col-sm-8">
-            <h4>Name: <span style="color:dodgerblue;">{{details.name}}</span></h4>
-            <h4>Mobile No: <span style="color:dodgerblue;font-family:areal">{{details.mobile_no}}</span></h4>
-            <h4>Email: <span style="color:dodgerblue;font-family:areal">{{details.email}}</span></h4>
-            <h4>About: <span style="color:dodgerblue;font-family:areal">{{details.about}}</span></h4>
-            <h4>Profession: <span style="color:dodgerblue;font-family:areal">{{details.profession}}</span></h4>
-            <h4>Place: <span style="color:dodgerblue;font-family:areal">{{details.place}}</span></h4>
-            <h4>Personal Key: <span style="color:dodgerblue;font-family:areal">{{details.slug}}</span></h4>
-             <a href="{%url 'home:skill' details.slug %}" class="button btn-info">Next</a>
-            <a href="{%url 'home:update-info' details.slug %}" class="button btn-warning">Edit</a>
-        </div>
-    </div>
+<div class="container mb-5" style="margin-top:50px;">
+    <div class="card-header bg-info"><strong>{{ details.name }}'s Details </strong></div>
 
+    <div class="card text-center ">
+        <!--{% thumbnail item.image "100x100" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %} -->
+        <img src="{{details.profile_picture.url}}"  class="card-img-top mt-3 mx-auto" style="width:200px;height:200px;border-radius:50%">
+
+        <div class="card-header bg-info mt-5 ">About</div>
+        <p class="card-body text-dark">{{details.about}}</p>
+        <div class="row">
+        <div class="col-lg-3">
+            <div class="card-header bg-info mt-5 ">Email</div>
+            <p class="card-body text-dark">{{details.email}}</p>
+        </div>
+        <div class="col-lg-3">
+            <div class="card-header bg-info mt-5 ">Mobile No.</div>
+            <p class="card-body text-dark">{{details.mobile_no}}</p>
+        </div>
+        <div class="col-lg-3">
+                <div class="card-header bg-info mt-5 ">Profession</div>
+                <p class="card-body text-dark">{{details.profession}}</p>
+        </div>
+        <div class="col-lg-3">
+                <div class="card-header bg-info mt-5 ">Place</div>
+                <p class="card-body text-dark">{{details.place}}</p>
+        </div>
 
 </div>
+        <a href="{%url 'home:skill' details.slug %}" class="button btn-primary mx-auto mt-3">Next</a>
+        <a href="{%url 'home:update-info' details.slug %}" class="button btn-warning mx-auto mb-5">Edit</a>
+    </div>
+</div>
+
+
 
 {% endblock %}
