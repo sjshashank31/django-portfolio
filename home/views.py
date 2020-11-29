@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .models import UserInfo, Study, Skill, Service, Work, Experience
-from .forms import InfoForm, SkillForm, EducationForm, ServiceForm, WorkForm, ExperienceForm, GetUserForm
+from .forms import InfoForm, SkillForm, EducationForm, ServiceForm, WorkForm, ExperienceForm
 from .util import render_to_pdf
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -127,6 +127,7 @@ def skill_info(request, slug):
             slug = UserInfo.objects.get(user=request.user, slug=slug)
             if form.is_valid():
                 skill = form.cleaned_data.get('skill')
+                skill = skill.capitalize()
                 percent = form.cleaned_data.get('percent')
                 if not Skill.objects.filter(user=request.user, slug__slug=slug, skill=skill):
                     skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
@@ -294,7 +295,9 @@ def update_skill(request, slug, skill):
         form = SkillForm(request.POST or None, instance=obj)
         if form.is_valid():
             skill = form.cleaned_data.get('skill')
-            form.save()
+            skill = skill.capitalize()
+            skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
+            skills.save()
             messages.success(request, "Your skill is updated")
             return redirect('home:skill-details', slug=slug)
 
@@ -415,9 +418,9 @@ def delete_work(request, slug, project_name):
 
 
 @login_required
-def delete_experience(request, slug, post):
+def delete_experience(request, slug, organisation_name):
     try:
-        obj = Experience.objects.filter(user=request.user,slug__slug=slug, post=post)
+        obj = Experience.objects.filter(user=request.user,slug__slug=slug, organisation_name=organisation_name)
         obj.delete()
         messages.success(request, "Your work experience is deleted")
         return redirect("home:experience-details", slug=slug)
@@ -426,7 +429,7 @@ def delete_experience(request, slug, post):
 
 
 def create_cv(request, slug):
-    try:
+
         details = {}
         details['info'] = UserInfo.objects.get(slug=slug,)
         name = UserInfo.objects.get(slug=slug)
@@ -446,5 +449,4 @@ def create_cv(request, slug):
 
                 }
             )
-    except:
-        return HttpResponse("Something wen wrong")
+
