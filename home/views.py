@@ -293,9 +293,11 @@ def update_skill(request, slug, skill):
     try:
         obj = get_object_or_404(Skill,user=request.user, slug__slug=slug, skill=skill)
         form = SkillForm(request.POST or None, instance=obj)
+        slug = UserInfo.objects.get(user=request.user, slug=slug)
         if form.is_valid():
             skill = form.cleaned_data.get('skill')
             skill = skill.capitalize()
+            percent = form.cleaned_data.get('percent')
             skills = Skill(user=request.user, slug=slug, skill=skill, percent=percent)
             skills.save()
             messages.success(request, "Your skill is updated")
