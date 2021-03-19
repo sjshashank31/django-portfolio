@@ -28,7 +28,7 @@ django-cors-headers==3.0.2
 django-countries==6.1.2
 django-crispy-forms==1.8.1
 django-rest-auth==0.9.5
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 entrypoints==0.3
 env==0.1.0
 et-xmlfile==1.0.1
